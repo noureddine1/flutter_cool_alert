@@ -64,15 +64,17 @@ class CoolAlert {
       lottieAsset: lottieAsset,
     );
 
-    Widget child = AlertDialog(
-      contentPadding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
-      content: CoolAlertContainer(
-        options: options,
-      ),
-    );
+    Widget child = WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          content: CoolAlertContainer(
+            options: options,
+          ),
+        ));
     return showGeneralDialog(
       barrierColor: Colors.black.withOpacity(0.5),
       transitionBuilder: (context, anim1, anim2, widget) {
